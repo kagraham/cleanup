@@ -19,9 +19,9 @@ def info_calcs(df):
     return mindate, maxdate, minlat, maxlat, minlon, maxlon, co2count
 
 # prints basic info once called
-def info(idnum):
-    ob = obuoy_obs()
-    if (idnum == 8):
+def info(df, idnum):
+    ob = df
+    if (idnum == 8):        # want to separate ID8 since observed with large gap between years
         ob1 = ob[(ob.ID==8) & (ob.index.year == 2012)]
         ob1.ID = '8A'
         ob2 = ob[(ob.ID==8) & (ob.index.year != 2012)]
@@ -49,8 +49,9 @@ def info(idnum):
         print('num obs: ', co2count)
     
     return None
-  
-  id_numbers = [1,2,4,5,6,8,10,11,12,13,14,15]
-  for i in id_numbers:
-      info(i)
-      print('done.')
+
+
+id_numbers = [1,2,4,5,6,8,10,11,12,13,14,15]
+for i in id_numbers:
+    info(df, i)
+    print('done.')

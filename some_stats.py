@@ -44,6 +44,7 @@ def brw_trend():
     daily_trend = trend.resample('D').mean()
     return trend, daily_trend
 
+# def obtained from stackoverflow?
 def datetime2decimal(series):
     times = series.index
     t = np.empty((len(times)))
